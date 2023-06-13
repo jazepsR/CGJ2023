@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44407454, g: 0.4933318, b: 0.5724006, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -431,6 +431,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1191026261074352, guid: f6233caea7405cd4089432ff4bf85915, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4553764845446052, guid: f6233caea7405cd4089432ff4bf85915, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -581,7 +585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &556939865
 Transform:
   m_ObjectHideFlags: 0
@@ -686,6 +690,52 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &760131667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 760131669}
+  - component: {fileID: 760131668}
+  m_Layer: 0
+  m_Name: ObjectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &760131668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760131667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a02424a52dc56f47b4b93bdd892df48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationBasedObjects:
+  - {fileID: 1498716540}
+--- !u!4 &760131669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760131667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.08416057, y: 0.14499998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &801467704
 GameObject:
   m_ObjectHideFlags: 0
@@ -5610,7 +5660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1172852927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10785,6 +10835,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cylinder
       objectReference: {fileID: 0}
+    - target: {fileID: 1376535175131390911, guid: 86b5de28eaa2f184895804c75f72fcb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1713198093814695061, guid: 86b5de28eaa2f184895804c75f72fcb8,
         type: 3}
       propertyPath: m_RootOrder
@@ -10890,6 +10945,7 @@ MonoBehaviour:
     MovementSmoothing: 0.05
     MaxNumberOfLocationUpdates: 4
     UseMovingAverage: 0
+    showDistance: 10
     HideObjectUntilItIsPlaced: 1
     ShowObjectAfterThisManyUpdates: 1
   DebugMode: 0
@@ -10971,6 +11027,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691038522706603118, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691038522706603118, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691038522706603118, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5691038522706603118, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
@@ -11070,8 +11141,9 @@ MonoBehaviour:
         AltitudeMode: 0
   PlacementOptions:
     MovementSmoothing: 0.05
-    MaxNumberOfLocationUpdates: 4
+    MaxNumberOfLocationUpdates: 1
     UseMovingAverage: 0
+    showDistance: 10
     HideObjectUntilItIsPlaced: 1
     ShowObjectAfterThisManyUpdates: 1
   DebugMode: 0

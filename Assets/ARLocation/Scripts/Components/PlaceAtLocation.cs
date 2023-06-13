@@ -72,6 +72,9 @@ namespace ARLocation
             [Tooltip("If true, use a moving average filter.")]
             public bool UseMovingAverage;
 
+            [Tooltip("Distance at which to enable the object. Zero means always active")]
+            public float showDistance = 10f;
+
             [Tooltip(
                 "If true, the object will be hidden until the object is placed at the geolocation. If will enable/disable the MeshRenderer or SkinnedMeshRenderer " +
                 "when available, and enable/disable all child game objects.")]
