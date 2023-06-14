@@ -1,3 +1,4 @@
+using ARLocation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,16 +9,19 @@ public class PlacedObject : MonoBehaviour
     [HideInInspector] public bool collected = false;
     private Animator anim;
     [SerializeField] private float disableTime = 0.5f;
+    [SerializeField] private float randomDisplacement = 7f;
     // Start is called before the first frame update
     void Awake()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         disappearing = false;
     }
 
     private void Start()
     {
         anim.ResetTrigger("Disappear");
+        Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
+        anim.transform.localPosition = new Vector3(randomDir.x, Random.Range(0.5f,8f), randomDir.y);
         disappearing = false;
     }
 
