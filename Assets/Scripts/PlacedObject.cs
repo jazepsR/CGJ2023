@@ -20,8 +20,8 @@ public class PlacedObject : MonoBehaviour
     private void Start()
     {
         anim.ResetTrigger("Disappear");
-        Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
-        anim.transform.localPosition = new Vector3(randomDir.x, Random.Range(0.5f,8f), randomDir.y);
+       // Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
+       // anim.transform.localPosition = new Vector3(randomDir.x, Random.Range(0.5f,8f), randomDir.y);
         disappearing = false;
     }
 
