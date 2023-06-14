@@ -13,7 +13,7 @@ public class PlacedObject : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         disappearing = false;
     }
 
