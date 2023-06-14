@@ -10,6 +10,8 @@ public class ObjectManager : MonoBehaviour
     public double accuracyTreshold = 20;
     public List<PlaceAtLocation> locationBasedObjects;
     public GameObject poorConnectionIndicator;
+    public GameObject winText;
+    public GameObject clickOnGhostText;
     [HideInInspector] public int currentGhost = 0;
     public static ObjectManager instance;
     public LoadingBar distanceBar;
@@ -20,13 +22,16 @@ public class ObjectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        winText.SetActive(false);
     }
     public void NextGhost()
     {
         currentGhost++;
-        if(currentGhost >= locationBasedObjects.Count) 
+        if (currentGhost >= locationBasedObjects.Count)
+        {
             currentGhost = 0;
+            winText.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -35,8 +40,6 @@ public class ObjectManager : MonoBehaviour
         Coordinates location = new Coordinates(ARLocationProvider.Instance.CurrentLocation.latitude,
             ARLocationProvider.Instance.CurrentLocation.longitude);
         double currentAccuracy = ARLocationProvider.Instance.CurrentLocation.accuracy;
-        poorConnectionIndicator.SetActive(currentAccuracy > accuracyTreshold);
-        distanceBar.gameObject.SetActive(currentAccuracy <= accuracyTreshold);
         for(int i=0; i<locationBasedObjects.Count;i++) 
         {
             if(i > currentGhost)
@@ -52,6 +55,11 @@ public class ObjectManager : MonoBehaviour
             return;
         var distance =location.DistanceTo(new Coordinates(obj.LocationOptions.GetLocation().Latitude,
             obj.LocationOptions.GetLocation().Longitude), UnitOfLength.Kilometers )*1000f;
+
+        poorConnectionIndicator.SetActive(currentAccuracy > accuracyTreshold);
+        distanceBar.gameObject.SetActive(currentAccuracy <= accuracyTreshold && obj.PlacementOptions.showDistance <= distance);
+        clickOnGhostText.gameObject.SetActive(obj.PlacementOptions.showDistance > distance);
+
         distanceBar.FillPercentage = (float)distance / 100f;
         if (obj.PlacementOptions.showDistance > distance)
         {
