@@ -36,7 +36,7 @@ public class PlayerInput : MonoBehaviour
                     PlacedObject obj = hit.transform.GetComponent<PlacedObject>();
                     if (obj)
                     {
-                        if (obj.collected!)
+                        if (obj.collected == false)
                         {
                             obj.Disappear();
                             GameManager.instance.IncreaseScore();
