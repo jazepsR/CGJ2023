@@ -37,9 +37,10 @@ public class ObjectManager : MonoBehaviour
         double currentAccuracy = ARLocationProvider.Instance.CurrentLocation.accuracy;
         poorConnectionIndicator.SetActive(currentAccuracy > accuracyTreshold);
         distanceBar.gameObject.SetActive(currentAccuracy <= accuracyTreshold);
-        foreach(PlaceAtLocation placeAtLocation in locationBasedObjects)
+        for(int i=0; i<locationBasedObjects.Count;i++) 
         {
-            placeAtLocation.gameObject.SetActive(false);
+            if(i != currentGhost)
+                locationBasedObjects[i].gameObject.SetActive(false);
         }
         PlaceAtLocation obj = locationBasedObjects[currentGhost];
         if (currentAccuracy > accuracyTreshold)
