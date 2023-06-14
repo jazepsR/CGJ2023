@@ -39,7 +39,7 @@ public class ObjectManager : MonoBehaviour
         distanceBar.gameObject.SetActive(currentAccuracy <= accuracyTreshold);
         for(int i=0; i<locationBasedObjects.Count;i++) 
         {
-            if(i != currentGhost)
+            if(i > currentGhost)
                 locationBasedObjects[i].gameObject.SetActive(false);
         }
         PlaceAtLocation obj = locationBasedObjects[currentGhost];

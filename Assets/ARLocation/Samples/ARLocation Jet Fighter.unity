@@ -1328,10 +1328,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accuracyTreshold: 10
   locationBasedObjects:
-  - {fileID: 1337339578}
   - {fileID: 257752869}
-  - {fileID: 1270510713}
+  - {fileID: 1337339578}
   - {fileID: 731414003}
+  - {fileID: 1270510713}
   poorConnectionIndicator: {fileID: 88499461}
   currentGhost: 0
   distanceBar: {fileID: 222833812}
