@@ -35,11 +35,9 @@ public class ObjectManager : MonoBehaviour
                 obj.LocationOptions.GetLocation().Longitude), UnitOfLength.Kilometers )*1000f;
             if (obj.PlacementOptions.showDistance > distance)
                 obj.gameObject.SetActive(true);
-            else
+            else if(obj.gameObject.activeSelf)
             {
-                obj.gameObject.SetActive(false);
-                //TODO implement disappear anim
-                //obj.GetComponent<Animator>().SetTrigger("Disappear");
+                obj.GetComponent<PlacedObject>().Disappear();
 
             }
         }
