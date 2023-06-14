@@ -11,11 +11,13 @@ public class PlacedObject : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();
+        disappearing = false;
     }
 
     private void Start()
     {
         anim.ResetTrigger("Disappear");
+        disappearing = false;
     }
 
     // Update is called once per frame

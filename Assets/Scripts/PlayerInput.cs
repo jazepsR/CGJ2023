@@ -38,11 +38,11 @@ public class PlayerInput : MonoBehaviour
                     {
                         if (obj.disappearing!)
                         {
+                            obj.Disappear();
                             GameManager.instance.IncreaseScore();
                             ObjectManager.instance.NextGhost();
                         }
                         obj.disappearing = true;
-                        obj.Disappear();
                     }
                 }
             }

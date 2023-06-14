@@ -491,8 +491,8 @@ MonoBehaviour:
         Altitude: 0
         AltitudeMode: 0
   PlacementOptions:
-    MovementSmoothing: 0.05
-    MaxNumberOfLocationUpdates: 2
+    MovementSmoothing: 0.149329
+    MaxNumberOfLocationUpdates: 1
     UseMovingAverage: 0
     showDistance: 7
     HideObjectUntilItIsPlaced: 1
@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516a81b8f9eb4ac41b0350841201dba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disappearing: 0
   disableTime: 0.5
 --- !u!114 &722233390004668626
 MonoBehaviour:

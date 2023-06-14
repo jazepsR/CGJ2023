@@ -54,7 +54,7 @@ namespace ARLocation.UI
 
             if (UsePercentageText)
             {
-                barText.text = (FillPercentage * 100.0f) + " m";
+                barText.text = (int)(FillPercentage * 100.0f) + " m";
             }
             else
             {

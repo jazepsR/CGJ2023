@@ -54,9 +54,13 @@ public class ObjectManager : MonoBehaviour
             obj.LocationOptions.GetLocation().Longitude), UnitOfLength.Kilometers )*1000f;
         distanceBar.FillPercentage = (float)distance / 100f;
         if (obj.PlacementOptions.showDistance > distance)
-            obj.gameObject.SetActive(true);
-        else if(obj.gameObject.activeSelf)
         {
+            obj.gameObject.SetActive(true);
+            obj.GetComponent<PlacedObject>().disappearing = false;
+        }
+        else if (obj.gameObject.activeSelf)
+        {
+            //obj.gameObject.SetActive(false);
             obj.GetComponent<PlacedObject>().Disappear();
         }
     }
