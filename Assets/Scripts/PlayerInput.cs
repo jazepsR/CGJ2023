@@ -39,7 +39,7 @@ public class PlayerInput : MonoBehaviour
                         if (obj.disappearing)
                         {
                             GameManager.instance.IncreaseScore();
-                            ObjectManager.instance.currentGhost++;
+                            ObjectManager.instance.NextGhost();
                         }
                         obj.disappearing = true;
                         obj.Disappear();
