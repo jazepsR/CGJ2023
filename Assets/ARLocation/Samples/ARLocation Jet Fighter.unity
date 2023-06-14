@@ -596,7 +596,7 @@ PrefabInstance:
     - target: {fileID: 6608985507204010009, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: m_Name
-      value: spoksreal_1024 (1)
+      value: ghostOutside1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1206,7 +1206,7 @@ PrefabInstance:
     - target: {fileID: 5691038522706603118, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5691038522706603118, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
@@ -1276,7 +1276,7 @@ PrefabInstance:
     - target: {fileID: 6608985507204010009, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: m_Name
-      value: spoksreal_1024 (3)
+      value: ghostOutside2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1326,12 +1326,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a02424a52dc56f47b4b93bdd892df48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accuracyTreshold: 20
+  accuracyTreshold: 10
   locationBasedObjects:
   - {fileID: 1337339578}
   - {fileID: 257752869}
-  - {fileID: 731414003}
   - {fileID: 1270510713}
+  - {fileID: 731414003}
   poorConnectionIndicator: {fileID: 88499461}
   currentGhost: 0
   distanceBar: {fileID: 222833812}
@@ -11717,7 +11717,7 @@ PrefabInstance:
     - target: {fileID: 5691038522706603118, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5691038522706603118, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
@@ -11787,7 +11787,7 @@ PrefabInstance:
     - target: {fileID: 6608985507204010009, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: m_Name
-      value: spoksreal_1024 (4)
+      value: ghostCourtyard2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12035,7 +12035,7 @@ PrefabInstance:
     - target: {fileID: 6608985507204010009, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: m_Name
-      value: spoksreal_1024 (2)
+      value: ghostCourtyard1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
