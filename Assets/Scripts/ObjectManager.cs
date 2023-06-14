@@ -1,4 +1,5 @@
 using ARLocation;
+using ARLocation.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,10 +10,23 @@ public class ObjectManager : MonoBehaviour
     public double accuracyTreshold = 20;
     public List<PlaceAtLocation> locationBasedObjects;
     public GameObject poorConnectionIndicator;
+    [HideInInspector] public int currentGhost = 0;
+    public static ObjectManager instance;
+    public LoadingBar distanceBar;
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+    public void NextGhost()
+    {
+        currentGhost++;
+        if(currentGhost >= locationBasedObjects.Count) 
+            currentGhost = 0;
     }
 
     // Update is called once per frame
@@ -22,27 +36,27 @@ public class ObjectManager : MonoBehaviour
             ARLocationProvider.Instance.CurrentLocation.longitude);
         double currentAccuracy = ARLocationProvider.Instance.CurrentLocation.accuracy;
         poorConnectionIndicator.SetActive(currentAccuracy > accuracyTreshold);
-        foreach (PlaceAtLocation obj in locationBasedObjects)
+        distanceBar.gameObject.SetActive(currentAccuracy <= accuracyTreshold);
+        PlaceAtLocation obj = locationBasedObjects[currentGhost];
+        if (currentAccuracy > accuracyTreshold)
         {
-            if (currentAccuracy > accuracyTreshold)
-            {
-                obj.gameObject.SetActive(false);
-                continue;
-            }
-            if(obj.PlacementOptions.showDistance ==0)
-                continue;
-            var distance =location.DistanceTo(new Coordinates(obj.LocationOptions.GetLocation().Latitude,
-                obj.LocationOptions.GetLocation().Longitude), UnitOfLength.Kilometers )*1000f;
-            if (obj.PlacementOptions.showDistance > distance)
-                obj.gameObject.SetActive(true);
-            else if(obj.gameObject.activeSelf)
-            {
-                obj.GetComponent<PlacedObject>().Disappear();
-
-            }
+            obj.gameObject.SetActive(false);
+            return;
+        }
+        if (obj.PlacementOptions.showDistance == 0)
+            return;
+        var distance =location.DistanceTo(new Coordinates(obj.LocationOptions.GetLocation().Latitude,
+            obj.LocationOptions.GetLocation().Longitude), UnitOfLength.Kilometers )*1000f;
+        distanceBar.FillPercentage = (float)distance / 100f;
+        if (obj.PlacementOptions.showDistance > distance)
+            obj.gameObject.SetActive(true);
+        else if(obj.gameObject.activeSelf)
+        {
+            obj.GetComponent<PlacedObject>().Disappear();
         }
     }
 }
+
 
 public class Coordinates
 {

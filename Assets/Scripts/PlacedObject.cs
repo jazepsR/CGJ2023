@@ -15,7 +15,6 @@ public class PlacedObject : MonoBehaviour
 
     private void Start()
     {
-        Debug.LogError("starting");
         anim.ResetTrigger("Disappear");
     }
 
