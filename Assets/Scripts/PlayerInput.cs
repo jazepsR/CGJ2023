@@ -33,8 +33,13 @@ public class PlayerInput : MonoBehaviour
                 if (hit.transform.tag == "ghost")
                 {
                     //TODO: mark ghost as completed
-                    hit.transform.gameObject.GetComponent<PlacedObject>().Disappear();
-                    GameManager.instance.IncreaseScore();
+                    PlacedObject obj = hit.transform.GetComponent<PlacedObject>();
+                    if (obj)
+                    {
+                        obj.Disappear();
+                        if(obj.disappearing)
+                            GameManager.instance.IncreaseScore();
+                    }
                 }
             }
         }

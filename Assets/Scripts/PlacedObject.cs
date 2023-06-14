@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlacedObject : MonoBehaviour
 {
-    private bool disappearing = false;
+    [HideInInspector] public bool disappearing = false;
     private Animator anim;
     [SerializeField] private float disableTime = 0.5f;
     // Start is called before the first frame update
@@ -13,8 +13,14 @@ public class PlacedObject : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        Debug.LogError("starting");
+        anim.ResetTrigger("Disappear");
+    }
+
     // Update is called once per frame
-   
+
 
     public void Disappear()
     {
