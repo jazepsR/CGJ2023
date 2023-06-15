@@ -8,6 +8,9 @@ public class PlayerInput : MonoBehaviour
     private Camera _camera;
     private float xRotationMult = -5;
     private float yRotationMult = 1.5f;
+    private float scaleFactor = 0.05f;
+    float touchDist = 0;
+    float lastDist = 0;
     // Start is called before the first frame update
     void Awake()
     {
@@ -54,13 +57,34 @@ public class PlayerInput : MonoBehaviour
                 }
                 break;
             case UIMode.map:
+                Transform castle = UIManager.instance.castleParent.transform;
                 if (Input.touchCount == 1 || Input.GetMouseButtonDown(0))
                 {
                     if (Input.touchCount == 1)
                     {
                         Touch touch = Input.GetTouch(0);
-                        UIManager.instance.castleParent.transform.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self);
-                        UIManager.instance.castleParent.transform.Rotate(touch.deltaPosition.y * Time.deltaTime*yRotationMult,0 , 0, Space.World);
+                        castle.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self);
+                        castle.Rotate(touch.deltaPosition.y * Time.deltaTime*yRotationMult,0 , 0, Space.World);
+                    }
+                    if (Input.touchCount == 2)
+                    {
+                        Touch touch1 = Input.GetTouch(0);
+                        Touch touch2 = Input.GetTouch(1);
+
+                        if (touch1.phase == TouchPhase.Began && touch2.phase == TouchPhase.Began)
+                        {
+                            lastDist = Vector2.Distance(touch1.position, touch2.position);
+                        }
+
+                        if (touch1.phase == TouchPhase.Moved && touch2.phase == TouchPhase.Moved)
+                        {
+                            float newDist = Vector2.Distance(touch1.position, touch2.position);
+                            touchDist = lastDist - newDist;
+                            lastDist = newDist;
+
+                            // Your Code Here
+                            castle.localScale += Vector3.one* touchDist * scaleFactor;
+                        }
                     }
                 }
                 break;
