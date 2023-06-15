@@ -71,7 +71,7 @@ public class PlayerInput : MonoBehaviour
                         Touch touch1 = Input.GetTouch(0);
                         Touch touch2 = Input.GetTouch(1);
 
-                        if (touch1.phase == TouchPhase.Began && touch2.phase == TouchPhase.Began)
+                        if (touch1.phase == TouchPhase.Began ||touch2.phase == TouchPhase.Began)
                         {
                             lastDist = Vector2.Distance(touch1.position, touch2.position);
                         }
