@@ -6,6 +6,8 @@ using UnityEngine.iOS;
 public class PlayerInput : MonoBehaviour
 {
     private Camera _camera;
+    private float xRotationMult = 5;
+    private float yRotationMult = 1;
     // Start is called before the first frame update
     void Awake()
     {
@@ -57,7 +59,8 @@ public class PlayerInput : MonoBehaviour
                     if (Input.touchCount == 1)
                     {
                         Touch touch = Input.GetTouch(0);
-                        UIManager.instance.castleParent.transform.Rotate(touch.deltaPosition.x * Time.deltaTime, 0, 0, Space.Self);
+                        UIManager.instance.castleParent.transform.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self);
+                        UIManager.instance.castleParent.transform.Rotate(touch.deltaPosition.y * Time.deltaTime*yRotationMult,0 , 0, Space.World);
                     }
                 }
                 break;
