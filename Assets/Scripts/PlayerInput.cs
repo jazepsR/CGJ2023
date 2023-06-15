@@ -76,7 +76,7 @@ public class PlayerInput : MonoBehaviour
                             lastDist = Vector2.Distance(touch1.position, touch2.position);
                         }
 
-                        if (touch1.phase == TouchPhase.Moved && touch2.phase == TouchPhase.Moved)
+                        if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
                         {
                             float newDist = Vector2.Distance(touch1.position, touch2.position);
                             touchDist = lastDist - newDist;
