@@ -6,8 +6,8 @@ using UnityEngine.iOS;
 public class PlayerInput : MonoBehaviour
 {
     private Camera _camera;
-    private float xRotationMult = 5;
-    private float yRotationMult = 1;
+    private float xRotationMult = -5;
+    private float yRotationMult = 1.5f;
     private float scaleFactor = 0.05f;
     float touchDist = 0;
     float lastDist = 0;
