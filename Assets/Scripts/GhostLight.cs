@@ -10,8 +10,9 @@ public class GhostLight : MonoBehaviour
     public float startIdleTime = 2;
     public AnimationCurve moveCurve;
     // Start is called before the first frame update
-    void Awake()
+    void OnEnable()
     {
+        StopAllCoroutines();
         StartCoroutine("MoveCoroutine");
     }
     private IEnumerator MoveCoroutine()

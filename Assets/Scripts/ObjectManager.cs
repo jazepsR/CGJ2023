@@ -9,15 +9,21 @@ public class ObjectManager : MonoBehaviour
 {
     public double accuracyTreshold = 20;
     public List<PlaceAtLocation> locationBasedObjects;
+    private List<PlacedObject> placedObjects;
     public GameObject poorConnectionIndicator;
     public GameObject winText;
     public GameObject clickOnGhostText;
-    [HideInInspector] public int currentGhost = 0;
+    public int currentGhost = 0;
     public static ObjectManager instance;
     public LoadingBar distanceBar;
     private void Awake()
     {
         instance = this;
+        placedObjects = new List<PlacedObject>();
+        foreach(PlaceAtLocation obj in locationBasedObjects)
+        {
+            placedObjects.Add(obj.GetComponent<PlacedObject>());
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -42,8 +48,11 @@ public class ObjectManager : MonoBehaviour
         double currentAccuracy = ARLocationProvider.Instance.CurrentLocation.accuracy;
         for(int i=0; i<locationBasedObjects.Count;i++) 
         {
-            if(i > currentGhost)
+            if (i > currentGhost)
+            {
                 locationBasedObjects[i].gameObject.SetActive(false);
+            }
+            placedObjects[i].ghostLight.SetActive(i == currentGhost);
         }
         PlaceAtLocation obj = locationBasedObjects[currentGhost];
         if (currentAccuracy > accuracyTreshold)

@@ -6,6 +6,7 @@ using UnityEngine;
 public class CastleController : MonoBehaviour
 {
     public List<GameObject> floors;
+    public List<GameObject> ghostLights;
     private int currentFloor;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class CastleController : MonoBehaviour
         for(int i =0;i<floors.Count;i++)
         {
            floors[i].gameObject.SetActive(i< currentFloor);
+            ghostLights[i].gameObject.SetActive(i==currentFloor);   
         }
     }
 
@@ -27,7 +29,7 @@ public class CastleController : MonoBehaviour
     {
         currentFloor = currentFloor + 1;
         if (currentFloor > floors.Count)
-            currentFloor = floors.Count ;
+            currentFloor = floors.Count;
         SetupFloors();
     }
 

@@ -10,7 +10,7 @@ public class PlacedObject : MonoBehaviour
     private Animator anim;
     [SerializeField] private float disableTime = 0.5f;
     [SerializeField] private float randomDisplacement = 7f;
-    public GameObject castleLightIndicator;
+    public GameObject ghostLight;
     public Transform rootBone; 
     // Start is called before the first frame update
     void Awake()
