@@ -6,8 +6,8 @@ using UnityEngine.iOS;
 public class PlayerInput : MonoBehaviour
 {
     private Camera _camera;
-    private float xRotationMult = 5;
-    private float yRotationMult = 1;
+    private float xRotationMult = -5;
+    private float yRotationMult = 1.5f;
     // Start is called before the first frame update
     void Awake()
     {
