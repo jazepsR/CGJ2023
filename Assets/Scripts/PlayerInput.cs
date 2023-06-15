@@ -15,37 +15,52 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+        switch(UIManager.instance.viewerMode)
         {
-            Ray ray;
-            if (Input.touchCount > 0)
-            {
-                Touch touch = Input.GetTouch(0);
-                ray = Camera.main.ScreenPointToRay(touch.position);
-            }
-            else
-            {//keyboard
-                ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            }
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                if (hit.transform.tag == "ghost")
+            case UIMode.AR:
+                if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
                 {
-                    //TODO: mark ghost as completed
-                    PlacedObject obj = hit.transform.GetComponent<PlacedObject>();
-                    if (obj)
+                    Ray ray;
+                    if (Input.touchCount > 0)
                     {
-                        if (obj.collected == false)
+                        Touch touch = Input.GetTouch(0);
+                        ray = Camera.main.ScreenPointToRay(touch.position);
+                    }
+                    else
+                    {//keyboard
+                        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    }
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                    {
+                        if (hit.transform.tag == "ghost")
                         {
-                            obj.Disappear();
-                            GameManager.instance.IncreaseScore();
-                            ObjectManager.instance.NextGhost();
-                            obj.collected = true;
+                            //TODO: mark ghost as completed
+                            PlacedObject obj = hit.transform.GetComponent<PlacedObject>();
+                            if (obj)
+                            {
+                                if (obj.collected == false)
+                                {
+                                    obj.Disappear();
+                                    GameManager.instance.IncreaseScore();
+                                    ObjectManager.instance.NextGhost();
+                                    obj.collected = true;
+                                }
+                            }
                         }
                     }
                 }
-            }
+                break;
+            case UIMode.map:
+                if (Input.touchCount == 1 || Input.GetMouseButtonDown(0))
+                {
+                    if (Input.touchCount == 1)
+                    {
+                        Touch touch = Input.GetTouch(0);
+                        UIManager.instance.castleParent.transform.Rotate(touch.deltaPosition.x * Time.deltaTime, 0, 0, Space.Self);
+                    }
+                }
+                break;
         }
     }
 }
