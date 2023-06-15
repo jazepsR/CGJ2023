@@ -75,6 +75,7 @@ public class ObjectManager : MonoBehaviour
 }
 
 
+
 public class Coordinates
 {
     public double Latitude { get; private set; }
