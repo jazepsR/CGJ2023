@@ -60,7 +60,7 @@ public class PlacedObject : MonoBehaviour
             MusicController.instance.PlayHitSound();
         }
         
-        if(health==0&& collected == false)
+        if(health<=0&& collected == false)
         {
             Disappear();
             MusicController.instance.PlayHitSound();
