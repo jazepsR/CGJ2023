@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour
     private float scaleFactor = 0.005f;
     float touchDist = 0;
     float lastDist = 0;
-    float minScale = 0.04f;
+    float minScale = 0.03f;
     float maxScale = 0.1f;
     // Start is called before the first frame update
     void Awake()
@@ -59,14 +59,15 @@ public class PlayerInput : MonoBehaviour
                 }
                 break;
             case UIMode.map:
-                Transform castle = UIManager.instance.castleParent.transform;
+                Transform castleParent = UIManager.instance.castleParent.transform;
+                Transform castle = UIManager.instance.castle.transform;
                 if (Input.touchCount == 1 || Input.GetMouseButtonDown(0))
                 {
                     if (Input.touchCount == 1)
                     {
                         Touch touch = Input.GetTouch(0);
                         castle.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self);
-                        castle.Rotate(touch.deltaPosition.y * Time.deltaTime*yRotationMult,0 , 0, Space.World);
+                        castleParent.Rotate(touch.deltaPosition.y * Time.deltaTime*yRotationMult,0 , 0, Space.Self);
                     }
                     if (Input.touchCount == 2)
                     {
@@ -85,8 +86,13 @@ public class PlayerInput : MonoBehaviour
                             lastDist = newDist;
 
                             // Your Code Here
-                            if((touchDist > 0 && castle.localScale.x <= maxScale) || (touchDist < 0 && castle.localScale.x >= minScale))
+                            //if((touchDist > 0 && castle.localScale.x <= maxScale) || (touchDist < 0 && castle.localScale.x >= minScale))
                                 castle.localScale += Vector3.one* touchDist * scaleFactor;
+                            if (castle.localScale.x > maxScale)
+                                castle.localScale = maxScale * Vector3.one;
+                            if (castle.localScale.x < minScale)
+                                castle.localScale = minScale * Vector3.one;
+                            
                         }
                     }
                 }

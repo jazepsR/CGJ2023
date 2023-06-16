@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [HideInInspector] public UIMode viewerMode = UIMode.map;
     public GameObject ghostParent;
     public GameObject castleParent;
+    public GameObject castle;
     private void Awake()
     {
         instance = this;
