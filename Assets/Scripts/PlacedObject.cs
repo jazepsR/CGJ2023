@@ -58,15 +58,13 @@ public class PlacedObject : MonoBehaviour
             anim.SetTrigger("Hit");
             Invoke("ResetHit", 1f);
             MusicController.instance.PlayHitSound();
-        }
-        
-        if(health<=0&& collected == false)
+        }else if(health<=0&& collected == false)
         {
-            Disappear();
-            MusicController.instance.PlayHitSound();
-            GameManager.instance.IncreaseScore();
             ObjectManager.instance.NextGhost();
+            GameManager.instance.IncreaseScore();
             collected = true;
+            MusicController.instance.PlayHitSound();
+            Disappear();
         }
     }
 
