@@ -8,12 +8,14 @@ public class PlacedObject : MonoBehaviour
 {
     [HideInInspector] public bool disappearing = false;
     [HideInInspector] public bool collected = false;
+    [HideInInspector] public bool gotHit = false;
     private Animator anim;
     [SerializeField] private float disableTime = 0.5f;
     [SerializeField] private float randomDisplacement = 7f;
     public GameObject ghostLight;
     public Transform rootBone; 
-    public float moveSpeed = 1f; 
+    public float moveSpeed = 1f;
+    public int health = 3;
     Vector3 target;
     Vector3 startPosition;
     // Start is called before the first frame update
@@ -45,10 +47,31 @@ public class PlacedObject : MonoBehaviour
             SetTarget();
         }
     }
+    public void GetHit()
+    {
+        if(health >1 && gotHit== false)
+        {
+            health--;
+            gotHit = true;
+            anim.SetTrigger("Hit");
+            Invoke("ResetHit", 1.5f);
+        }
+        
+        if(health==1&& collected == false)
+        {
+            Disappear();
+            GameManager.instance.IncreaseScore();
+            ObjectManager.instance.NextGhost();
+            collected = true;
+        }
+    }
 
+    private void ResetHit()
+    {
+        gotHit = false;
+    }
     private void SetTarget()
     {
-
         Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
         target = startPosition + new Vector3(randomDir.x, 0, randomDir.y);
     }

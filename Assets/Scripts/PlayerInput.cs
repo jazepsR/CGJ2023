@@ -42,17 +42,10 @@ public class PlayerInput : MonoBehaviour
                     {
                         if (hit.transform.tag == "ghost")
                         {
-                            //TODO: mark ghost as completed
                             PlacedObject obj = hit.transform.GetComponent<PlacedObject>();
                             if (obj)
                             {
-                                if (obj.collected == false)
-                                {
-                                    obj.Disappear();
-                                    GameManager.instance.IncreaseScore();
-                                    ObjectManager.instance.NextGhost();
-                                    obj.collected = true;
-                                }
+                                obj.GetHit();
                             }
                         }
                     }
