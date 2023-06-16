@@ -11,6 +11,7 @@ public class MusicController : MonoBehaviour
     private float lerpTime = 1f;
     [HideInInspector] public bool isMap = true;
     public static MusicController instance;
+    public List<AudioClip> enemyHitSounds;
     void Awake()
     {        
         GameObject[] objs = GameObject.FindGameObjectsWithTag("music");
@@ -31,10 +32,13 @@ public class MusicController : MonoBehaviour
     {
         soundFX.PlayOneShot(clip);
     }
-
+    public void PlayHitSound()
+    {
+        soundFX.PlayOneShot(enemyHitSounds[Random.Range(0,enemyHitSounds.Count)]);
+    }
     void Update()
     {
-        mapAmbience.volume = Mathf.Lerp(mapAmbience.volume, isMap ? 0.5f : 0, Time.deltaTime * lerpTime);
-        arAmbience.volume = Mathf.Lerp(mapAmbience.volume, isMap ? 0 : 0.5f, Time.deltaTime * lerpTime);
+        mapAmbience.volume = Mathf.Lerp(mapAmbience.volume, isMap ? 0.3f : 0, Time.deltaTime * lerpTime);
+        arAmbience.volume = Mathf.Lerp(mapAmbience.volume, isMap ? 0 : 0.3f, Time.deltaTime * lerpTime);
     }
 }

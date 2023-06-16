@@ -17,20 +17,22 @@ public class PlacedObject : MonoBehaviour
     public float moveSpeed = 1f;
     public int health = 3;
     Vector3 target;
-    [HideInInspector] public Vector3 startPosition;
     // Start is called before the first frame update
     void Awake()
     {
         anim = GetComponent<Animator>();
         disappearing = false;
     }
-
+    private void OnEnable()
+    {
+        //startPosition = Camera.main.transform.position;
+    }
     private void Start()
     {
        // Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
        // rootBone.localPosition = new Vector3(randomDir.x, 0, randomDir.y);
         disappearing = false;
-        startPosition = transform.position;
+        //startPosition = transform.position;
         anim.ResetTrigger("Disappear");
         SetTarget();
     }
@@ -55,11 +57,13 @@ public class PlacedObject : MonoBehaviour
             gotHit = true;
             anim.SetTrigger("Hit");
             Invoke("ResetHit", 1f);
+            MusicController.instance.PlayHitSound();
         }
         
-        if(health==1&& collected == false)
+        if(health==0&& collected == false)
         {
             Disappear();
+            MusicController.instance.PlayHitSound();
             GameManager.instance.IncreaseScore();
             ObjectManager.instance.NextGhost();
             collected = true;
@@ -73,7 +77,7 @@ public class PlacedObject : MonoBehaviour
     private void SetTarget()
     {
         Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
-        target = startPosition + new Vector3(randomDir.x, 0, randomDir.y);
+        target = Camera.main.transform.position + new Vector3(randomDir.x, 0, randomDir.y);
     }
     // Update is called once per frame
     
