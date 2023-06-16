@@ -16290,7 +16290,7 @@ MonoBehaviour:
   ghostParent: {fileID: 1805965999}
   castleParent: {fileID: 1834501014}
   castle: {fileID: 1006396853}
-  ghostMovedText: {fileID: 0}
+  ghostMovedText: {fileID: 340445789}
 --- !u!1001 &1445277504
 PrefabInstance:
   m_ObjectHideFlags: 0

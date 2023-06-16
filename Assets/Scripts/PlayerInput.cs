@@ -56,10 +56,10 @@ public class PlayerInput : MonoBehaviour
             case UIMode.map:
                 Transform castleParent = UIManager.instance.castleParent.transform;
                 Transform castle = UIManager.instance.castle.transform;
-                if (castleParent.localEulerAngles.z < minTilt)
+                /*if (castleParent.localEulerAngles.z < minTilt)
                     castleParent.rotation = Quaternion.Euler(castleParent.localEulerAngles.x, castleParent.localEulerAngles.y, minTilt);
                 if (castleParent.localEulerAngles.z > maxTilt)
-                    castleParent.localRotation = Quaternion.Euler(castleParent.localEulerAngles.x, castleParent.localEulerAngles.y, maxTilt);
+                    castleParent.localRotation = Quaternion.Euler(castleParent.localEulerAngles.x, castleParent.localEulerAngles.y, maxTilt);*/
                 if (Input.touchCount == 1)
                 {
                     Touch touch = Input.GetTouch(0);

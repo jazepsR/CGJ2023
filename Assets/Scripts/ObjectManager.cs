@@ -38,7 +38,7 @@ public class ObjectManager : MonoBehaviour
         currentGhost++;
         UIManager.instance.ghostMovedText.SetActive(true);
         //placedObjects[currentGhost].startPosition = placedObjects[currentGhost].transform.position;
-        if (currentGhost >= locationBasedObjects.Count)
+        if (currentGhost >= locationBasedObjects.Count-1)
         {
             UIManager.instance.ghostMovedText.SetActive(false);
             currentGhost = 0;
@@ -48,8 +48,8 @@ public class ObjectManager : MonoBehaviour
 
     private void ShowWinMenu()
     {
-        MusicController.instance.PlaySound(ghostDeath);
         winText.SetActive(true);
+        MusicController.instance.PlaySound(ghostDeath);
         MusicController.instance.PlaySound(winNarration);
     }
 
