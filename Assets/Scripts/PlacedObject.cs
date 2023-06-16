@@ -51,7 +51,7 @@ public class PlacedObject : MonoBehaviour
     }
     public void GetHit()
     {
-        if(health >1 && gotHit== false)
+        if(health >=1 && gotHit== false)
         {
             health--;
             gotHit = true;
