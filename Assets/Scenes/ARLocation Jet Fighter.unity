@@ -660,9 +660,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
       propertyPath: ghostLight
       value: 
       objectReference: {fileID: 243265222}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
+      propertyPath: randomDisplacement
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: castleLightIndicator
@@ -1278,9 +1288,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
       propertyPath: ghostLight
       value: 
       objectReference: {fileID: 100684904}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
+      propertyPath: randomDisplacement
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: castleLightIndicator
@@ -2806,9 +2826,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
       propertyPath: ghostLight
       value: 
       objectReference: {fileID: 1107974676}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
+      propertyPath: randomDisplacement
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: castleLightIndicator
@@ -2922,9 +2952,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
       propertyPath: ghostLight
       value: 
       objectReference: {fileID: 559988377}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
+      propertyPath: randomDisplacement
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: castleLightIndicator
@@ -15246,9 +15286,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
       propertyPath: ghostLight
       value: 
       objectReference: {fileID: 134316248}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
+      propertyPath: randomDisplacement
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: castleLightIndicator
@@ -15655,9 +15705,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
       propertyPath: ghostLight
       value: 
       objectReference: {fileID: 1025441131}
+    - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
+        type: 3}
+      propertyPath: randomDisplacement
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 383805030105436132, guid: d045840d8e15c4b7a9c328fdc6824c1c,
         type: 3}
       propertyPath: castleLightIndicator
