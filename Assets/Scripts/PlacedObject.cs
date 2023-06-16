@@ -53,21 +53,21 @@ public class PlacedObject : MonoBehaviour
     }
     public void GetHit()
     {
-        if(health >=1 && gotHit== false)
-        {
-            health--;
-            gotHit = true;
-            anim.SetTrigger("Hit");
-            Invoke("ResetHit", 1f);
-            MusicController.instance.PlayHitSound();
-        }
-        if(health<=0&& collected == false)
+        if (health <= 0 && collected == false)
         {
             ObjectManager.instance.NextGhost();
             GameManager.instance.IncreaseScore();
             collected = true;
             MusicController.instance.PlayHitSound();
             Disappear();
+        }
+        if (health >=1 && gotHit== false)
+        {
+            health--;
+            gotHit = true;
+            anim.SetTrigger("Hit");
+            Invoke("ResetHit", 1f);
+            MusicController.instance.PlayHitSound();
         }
     }
 

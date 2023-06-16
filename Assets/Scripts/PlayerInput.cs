@@ -61,9 +61,9 @@ public class PlayerInput : MonoBehaviour
                     Touch touch = Input.GetTouch(0);
                     castle.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self);
                     castleParent.Rotate(0,0,touch.deltaPosition.y * Time.deltaTime*yRotationMult, Space.Self);
-                    if(castleParent.rotation.eulerAngles.z < minTilt)
+                    if(castleParent.rotation.eulerAngles.z > minTilt)
                         castleParent.rotation = Quaternion.Euler( castleParent.rotation.eulerAngles.x, castleParent.rotation.eulerAngles.y, minTilt);
-                    if (castleParent.rotation.eulerAngles.z > maxTilt)
+                    if (castleParent.rotation.eulerAngles.z < maxTilt)
                         castleParent.rotation = Quaternion.Euler(castleParent.rotation.eulerAngles.x, castleParent.rotation.eulerAngles.y, maxTilt);
 
                 }
