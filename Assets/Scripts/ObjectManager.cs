@@ -31,26 +31,26 @@ public class ObjectManager : MonoBehaviour
     void Start()
     {
         winText.SetActive(false);
+        UIManager.instance.ghostMovedText.SetActive(false);
     }
     public void NextGhost()
     {
         currentGhost++;
+        UIManager.instance.ghostMovedText.SetActive(true);
         //placedObjects[currentGhost].startPosition = placedObjects[currentGhost].transform.position;
         if (currentGhost >= locationBasedObjects.Count)
         {
+            UIManager.instance.ghostMovedText.SetActive(false);
             currentGhost = 0;
-            StartCoroutine(ShowWinMenu());  
+            ShowWinMenu();  
         }
     }
 
-    private IEnumerator ShowWinMenu()
+    private void ShowWinMenu()
     {
         MusicController.instance.PlaySound(ghostDeath);
-        yield return new WaitForSecondsRealtime(1.5f);
         winText.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
         MusicController.instance.PlaySound(winNarration);
-
     }
 
     // Update is called once per frame

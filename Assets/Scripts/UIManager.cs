@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     public GameObject ghostParent;
     public GameObject castleParent;
     public GameObject castle;
+    public GameObject ghostMovedText;
     private void Awake()
     {
         instance = this;
@@ -50,6 +51,7 @@ public class UIManager : MonoBehaviour
         mapMenu.SetActive(viewerMode == UIMode.map);
         //arMenu.SetActive(viewerMode == UIMode.AR);
         castleParent.SetActive(viewerMode == UIMode.map);
+        ghostMovedText.SetActive(false);
     }
 
     // Update is called once per frame
