@@ -13,6 +13,8 @@ public class PlayerInput : MonoBehaviour
     float lastDist = 0;
     float minScale = 0.04f;
     float maxScale = 0.1f;
+    float maxTilt = 15f;
+    float minTilt = -50f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -59,6 +61,11 @@ public class PlayerInput : MonoBehaviour
                     Touch touch = Input.GetTouch(0);
                     castle.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self);
                     castleParent.Rotate(0,0,touch.deltaPosition.y * Time.deltaTime*yRotationMult, Space.Self);
+                    if(castleParent.rotation.eulerAngles.z < minTilt)
+                        castleParent.rotation = Quaternion.Euler( castleParent.rotation.eulerAngles.x, castleParent.rotation.eulerAngles.y, minTilt);
+                    if (castleParent.rotation.eulerAngles.z > maxTilt)
+                        castleParent.rotation = Quaternion.Euler(castleParent.rotation.eulerAngles.x, castleParent.rotation.eulerAngles.y, maxTilt);
+
                 }
                 if (Input.touchCount == 2)
                 {

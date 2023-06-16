@@ -60,7 +60,8 @@ public class PlacedObject : MonoBehaviour
             anim.SetTrigger("Hit");
             Invoke("ResetHit", 1f);
             MusicController.instance.PlayHitSound();
-        }else if(health<=0&& collected == false)
+        }
+        if(health<=0&& collected == false)
         {
             ObjectManager.instance.NextGhost();
             GameManager.instance.IncreaseScore();
