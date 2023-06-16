@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     private Camera _camera;
     private float xRotationMult = -5;
     private float yRotationMult = 1.5f;
-    private float scaleFactor = 0.01f;
+    private float scaleFactor = 0.001f;
     float touchDist = 0;
     float lastDist = 0;
     float minScale = 0.03f;
@@ -61,41 +61,39 @@ public class PlayerInput : MonoBehaviour
             case UIMode.map:
                 Transform castleParent = UIManager.instance.castleParent.transform;
                 Transform castle = UIManager.instance.castle.transform;
-                if (Input.touchCount == 1 || Input.GetMouseButtonDown(0))
+                if (Input.touchCount == 1)
                 {
-                    if (Input.touchCount == 1)
+                    Touch touch = Input.GetTouch(0);
+                    castle.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self);
+                    castleParent.Rotate(0,0,touch.deltaPosition.y * Time.deltaTime*yRotationMult, Space.Self);
+                }
+                if (Input.touchCount == 2)
+                {
+                    Touch touch1 = Input.GetTouch(0);
+                    Touch touch2 = Input.GetTouch(1);
+
+                    if (touch1.phase == TouchPhase.Began || touch2.phase == TouchPhase.Began)
                     {
-                        Touch touch = Input.GetTouch(0);
-                        castle.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self);
-                        castleParent.Rotate(0,0,touch.deltaPosition.y * Time.deltaTime*yRotationMult, Space.Self);
+                        lastDist = Vector2.Distance(touch1.position, touch2.position);
                     }
-                    if (Input.touchCount == 2)
+
+                    if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
                     {
-                        Touch touch1 = Input.GetTouch(0);
-                        Touch touch2 = Input.GetTouch(1);
+                        float newDist = Vector2.Distance(touch1.position, touch2.position);
+                        touchDist = lastDist - newDist;
+                        lastDist = newDist;
 
-                        if (touch1.phase == TouchPhase.Began ||touch2.phase == TouchPhase.Began)
-                        {
-                            lastDist = Vector2.Distance(touch1.position, touch2.position);
-                        }
+                        // Your Code Here
+                        if((touchDist > 0 && castle.localScale.x <= maxScale) || (touchDist < 0 && castle.localScale.x >= minScale))
+                            castle.localScale += Vector3.one * touchDist * scaleFactor;
+                        /*if (castle.localScale.x > maxScale)
+                            castle.localScale = maxScale * Vector3.one;
+                        if (castle.localScale.x < minScale)
+                            castle.localScale = minScale * Vector3.one;*/
 
-                        if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
-                        {
-                            float newDist = Vector2.Distance(touch1.position, touch2.position);
-                            touchDist = lastDist - newDist;
-                            lastDist = newDist;
-
-                            // Your Code Here
-                            //if((touchDist > 0 && castle.localScale.x <= maxScale) || (touchDist < 0 && castle.localScale.x >= minScale))
-                            castle.localScale += Vector3.one* touchDist * scaleFactor;
-                            /*if (castle.localScale.x > maxScale)
-                                castle.localScale = maxScale * Vector3.one;
-                            if (castle.localScale.x < minScale)
-                                castle.localScale = minScale * Vector3.one;*/
-                            
-                        }
                     }
                 }
+                
                 break;
         }
     }
