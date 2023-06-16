@@ -61,7 +61,7 @@ public class ObjectManager : MonoBehaviour
         double currentAccuracy = ARLocationProvider.Instance.CurrentLocation.accuracy;
         for(int i=0; i<locationBasedObjects.Count;i++) 
         {
-            if (i > currentGhost)
+            if (i != currentGhost)
             {
                 locationBasedObjects[i].gameObject.SetActive(false);
             }
