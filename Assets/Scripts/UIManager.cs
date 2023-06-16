@@ -22,10 +22,13 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        viewerMode = UIMode.map;
+        ToggleViewMode();
     }
     // Start is called before the first frame update
     void Start()
     {
+        viewerMode = UIMode.map;
         ToggleViewMode();
     }
 

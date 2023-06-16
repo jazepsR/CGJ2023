@@ -26,11 +26,13 @@ public class PlacedObject : MonoBehaviour
     private void OnEnable()
     {
         //startPosition = Camera.main.transform.position;
+        anim = GetComponent<Animator>();
     }
     private void Start()
     {
-       // Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
-       // rootBone.localPosition = new Vector3(randomDir.x, 0, randomDir.y);
+        anim = GetComponent<Animator>();
+        // Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
+        // rootBone.localPosition = new Vector3(randomDir.x, 0, randomDir.y);
         disappearing = false;
         //startPosition = transform.position;
         anim.ResetTrigger("Disappear");
@@ -85,7 +87,8 @@ public class PlacedObject : MonoBehaviour
         if(!disappearing)
         {
             disappearing = true;
-            anim.SetTrigger("Disappear");
+            if(anim)
+                anim.SetTrigger("Disappear");
             Invoke("DisableObj", disableTime);
         }
     }
