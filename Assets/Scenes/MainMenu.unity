@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 439231957}
   - component: {fileID: 439231956}
   - component: {fileID: 439231955}
+  - component: {fileID: 439231958}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -495,6 +496,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439231953}
   m_CullTransparentMesh: 1
+--- !u!114 &439231958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439231953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e09e508e52103f4aa438572d7bfdf34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: a473bcccddbe21b48b04b46d22463e11, type: 3}
 --- !u!1 &765992523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef95e67886426446917a08e505e5285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introNarration: {fileID: 8300000, guid: 5b583b54f0c06ac47be13cb0ab50e0bd, type: 3}
+  introNarration: {fileID: 8300000, guid: 9ffc951d7db071140b0ba6a10dddbd00, type: 3}
   textMenu: {fileID: 1580129385}
   textMenuCanvas: {fileID: 1580129389}
   fadeCurve:
