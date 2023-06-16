@@ -8,9 +8,11 @@ public class PlayerInput : MonoBehaviour
     private Camera _camera;
     private float xRotationMult = -5;
     private float yRotationMult = 1.5f;
-    private float scaleFactor = 0.05f;
+    private float scaleFactor = 0.005f;
     float touchDist = 0;
     float lastDist = 0;
+    float minScale = 0.04f;
+    float maxScale = 0.1f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -83,7 +85,8 @@ public class PlayerInput : MonoBehaviour
                             lastDist = newDist;
 
                             // Your Code Here
-                            castle.localScale += Vector3.one* touchDist * scaleFactor;
+                            if((touchDist > 0 && castle.localScale.x <= maxScale) || (touchDist < 0 && castle.localScale.x >= minScale))
+                                castle.localScale += Vector3.one* touchDist * scaleFactor;
                         }
                     }
                 }

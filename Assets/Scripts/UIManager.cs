@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
     {
         arMenu.SetActive(viewerMode == UIMode.AR);
         mapMenu.SetActive(viewerMode == UIMode.map);
-        arMenu.SetActive(viewerMode == UIMode.AR);
+        //arMenu.SetActive(viewerMode == UIMode.AR);
         castleParent.SetActive(viewerMode == UIMode.map);
     }
 
