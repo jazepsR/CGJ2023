@@ -17,7 +17,7 @@ public class PlacedObject : MonoBehaviour
     public float moveSpeed = 1f;
     public int health = 3;
     Vector3 target;
-    Vector3 startPosition;
+    [HideInInspector] public Vector3 startPosition;
     // Start is called before the first frame update
     void Awake()
     {
@@ -54,7 +54,7 @@ public class PlacedObject : MonoBehaviour
             health--;
             gotHit = true;
             anim.SetTrigger("Hit");
-            Invoke("ResetHit", 1.5f);
+            Invoke("ResetHit", 1f);
         }
         
         if(health==1&& collected == false)

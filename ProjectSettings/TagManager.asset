@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ghost
+  - music
   layers:
   - Default
   - TransparentFX

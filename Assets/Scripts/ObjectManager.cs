@@ -33,6 +33,7 @@ public class ObjectManager : MonoBehaviour
     public void NextGhost()
     {
         currentGhost++;
+        placedObjects[currentGhost].startPosition = placedObjects[currentGhost].transform.position;
         if (currentGhost >= locationBasedObjects.Count)
         {
             currentGhost = 0;
@@ -65,8 +66,8 @@ public class ObjectManager : MonoBehaviour
         var distance =location.DistanceTo(new Coordinates(obj.LocationOptions.GetLocation().Latitude,
             obj.LocationOptions.GetLocation().Longitude), UnitOfLength.Kilometers )*1000f;
 
-        poorConnectionIndicator.SetActive(currentAccuracy > accuracyTreshold);
-        distanceBar.gameObject.SetActive(currentAccuracy <= accuracyTreshold && obj.PlacementOptions.showDistance <= distance);
+        poorConnectionIndicator.SetActive(currentAccuracy > accuracyTreshold || distance > 100);
+        distanceBar.gameObject.SetActive(currentAccuracy <= accuracyTreshold && obj.PlacementOptions.showDistance <= distance && 100 < distance );
         clickOnGhostText.gameObject.SetActive(obj.PlacementOptions.showDistance > distance);
 
         distanceBar.FillPercentage = (float)distance / 100f;

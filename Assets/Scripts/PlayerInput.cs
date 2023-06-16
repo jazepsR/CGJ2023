@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     private Camera _camera;
     private float xRotationMult = -5;
     private float yRotationMult = 1.5f;
-    private float scaleFactor = -0.00003f;
+    private float scaleFactor = 0.00003f;
     float touchDist = 0;
     float lastDist = 0;
     float minScale = 0.04f;
