@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     private Camera _camera;
     private float xRotationMult = -5;
     private float yRotationMult = 1.5f;
-    private float scaleFactor = 0.005f;
+    private float scaleFactor = 0.01f;
     float touchDist = 0;
     float lastDist = 0;
     float minScale = 0.03f;
@@ -67,7 +67,7 @@ public class PlayerInput : MonoBehaviour
                     {
                         Touch touch = Input.GetTouch(0);
                         castle.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self);
-                        castleParent.Rotate(touch.deltaPosition.y * Time.deltaTime*yRotationMult,0 , 0, Space.Self);
+                        castleParent.Rotate(0,0,touch.deltaPosition.y * Time.deltaTime*yRotationMult, Space.Self);
                     }
                     if (Input.touchCount == 2)
                     {
@@ -87,11 +87,11 @@ public class PlayerInput : MonoBehaviour
 
                             // Your Code Here
                             //if((touchDist > 0 && castle.localScale.x <= maxScale) || (touchDist < 0 && castle.localScale.x >= minScale))
-                                castle.localScale += Vector3.one* touchDist * scaleFactor;
-                            if (castle.localScale.x > maxScale)
+                            castle.localScale += Vector3.one* touchDist * scaleFactor;
+                            /*if (castle.localScale.x > maxScale)
                                 castle.localScale = maxScale * Vector3.one;
                             if (castle.localScale.x < minScale)
-                                castle.localScale = minScale * Vector3.one;
+                                castle.localScale = minScale * Vector3.one;*/
                             
                         }
                     }
