@@ -1,6 +1,7 @@
 using ARLocation;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils.Datums;
 using UnityEngine;
 
 public class PlacedObject : MonoBehaviour
@@ -12,6 +13,9 @@ public class PlacedObject : MonoBehaviour
     [SerializeField] private float randomDisplacement = 7f;
     public GameObject ghostLight;
     public Transform rootBone; 
+    public float moveSpeed = 1f; 
+    Vector3 target;
+    Vector3 startPosition;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,14 +25,35 @@ public class PlacedObject : MonoBehaviour
 
     private void Start()
     {
-        anim.ResetTrigger("Disappear");
-        Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
-        rootBone.localPosition = new Vector3(randomDir.x, Random.Range(-2f,8f), randomDir.y);
+       // Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
+       // rootBone.localPosition = new Vector3(randomDir.x, 0, randomDir.y);
         disappearing = false;
+        startPosition = transform.position;
+        anim.ResetTrigger("Disappear");
+        SetTarget();
+    }
+    private void Update()
+    {
+        float dist = Vector3.Distance(transform.position, target);
+        //Debug.LogError("dist: " + dist);
+        if (dist > 1)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * moveSpeed);
+        }
+        else
+        {
+            SetTarget();
+        }
     }
 
-    // Update is called once per frame
+    private void SetTarget()
+    {
 
+        Vector2 randomDir = Random.insideUnitCircle * randomDisplacement;
+        target = startPosition + new Vector3(randomDir.x, 0, randomDir.y);
+    }
+    // Update is called once per frame
+    
 
     public void Disappear()
     {
