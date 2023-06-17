@@ -78,7 +78,7 @@ public class ObjectManager : MonoBehaviour
         var distance =location.DistanceTo(new Coordinates(obj.LocationOptions.GetLocation().Latitude,
             obj.LocationOptions.GetLocation().Longitude), UnitOfLength.Kilometers )*1000f;
 
-        poorConnectionIndicator.SetActive(currentAccuracy > accuracyTreshold || distance > 100);
+        poorConnectionIndicator.SetActive(currentAccuracy > accuracyTreshold || distance > 500);
         distanceBar.gameObject.SetActive(currentAccuracy <= accuracyTreshold && obj.PlacementOptions.showDistance <= distance && 100 > distance );
         clickOnGhostText.gameObject.SetActive(obj.PlacementOptions.showDistance > distance);
 
