@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,16 +12,33 @@ public class MainMenu : MonoBehaviour
     public GameObject textMenu;
     public CanvasGroup textMenuCanvas;
     public AnimationCurve fadeCurve;
-    // Start is called before the first frame update
+
+
     void Start()
     {
         textMenu.SetActive(false); textMenuCanvas.alpha = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    async void Awake()
     {
-        
+        await UnityServices.InitializeAsync();
+
+        await SignInAnonymously();
+    }
+
+    async Task SignInAnonymously()
+    {
+        AuthenticationService.Instance.SignedIn += () =>
+        {
+            Debug.Log("Signed in as: " + AuthenticationService.Instance.PlayerId);
+        };
+        AuthenticationService.Instance.SignInFailed += s =>
+        {
+            // Take some action here...
+            Debug.Log(s);
+        };
+
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
     public void GoToText()
     {

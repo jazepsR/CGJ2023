@@ -11,7 +11,6 @@ public class ObjectManager : MonoBehaviour
     public List<PlaceAtLocation> locationBasedObjects;
     private List<PlacedObject> placedObjects;
     public GameObject poorConnectionIndicator;
-    public GameObject winText;
     public GameObject clickOnGhostText;
     public int currentGhost = 0;
     public static ObjectManager instance;
@@ -29,7 +28,6 @@ public class ObjectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        winText.SetActive(false);
         UIManager.instance.ghostMovedText.SetActive(false);
     }
     public void NextGhost()
@@ -47,7 +45,8 @@ public class ObjectManager : MonoBehaviour
 
     private void ShowWinMenu()
     {
-        winText.SetActive(true);
+        UIManager.instance.SetWinMode();
+        UIManager.instance.finishTime = Time.time;
         MusicController.instance.PlaySound(ghostDeath);
     }
 

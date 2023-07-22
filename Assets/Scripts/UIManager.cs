@@ -5,7 +5,7 @@ using TMPro;
 using UnityEditor;
 using System;
 
-public enum UIMode { map, AR}
+public enum UIMode { map, AR, win, leaderboard}
 public class UIManager : MonoBehaviour
 {
     [Header("map menu")]
@@ -19,6 +19,12 @@ public class UIManager : MonoBehaviour
     public TMP_Text score;
     public TMP_Text time;
 
+    [Header("leaderboard menu")]
+    public GameObject winMenu;
+
+    [Header("leaderboard menu")]
+    public GameObject leaderboardMenu;
+
     [Header("Other")]
     public static UIManager instance;
     [HideInInspector] public UIMode viewerMode = UIMode.map;
@@ -27,7 +33,8 @@ public class UIManager : MonoBehaviour
     public GameObject castle;
     public GameObject ghostMovedText;
     [HideInInspector] public float startTime = 0;
-    
+    [HideInInspector] public float finishTime = 0;
+
     private void Awake()
     {
         instance = this;
@@ -54,15 +61,40 @@ public class UIManager : MonoBehaviour
         ToggleViewMode();
     }
 
+    public void SetWinMode()
+    {
+        viewerMode = UIMode.win;
+        ToggleViewMode();
+    }
+
+    public void SetLeaderboardMode()
+    {
+        viewerMode = UIMode.leaderboard;
+        if(leaderboardMenu.TryGetComponent(out LeaderboardScreen leaderboardScreen))
+        {
+            leaderboardScreen.GetScores();
+        }
+        ToggleViewMode();
+    }
+
+    public float GetFinalTime()
+    {
+        if (finishTime == 0)
+            return -1;
+        else
+            return finishTime - startTime;
+    }
+
     public void ToggleViewMode()
     {
         arMenu.SetActive(viewerMode == UIMode.AR);
         mapMenu.SetActive(viewerMode == UIMode.map);
-        //arMenu.SetActive(viewerMode == UIMode.AR);
+        winMenu.SetActive(viewerMode == UIMode.win);
+        leaderboardMenu.SetActive(viewerMode == UIMode.leaderboard);
         castleParent.SetActive(viewerMode == UIMode.map);
         ghostMovedText.SetActive(false);
     }
-    public string GetTimeString(float timeInSeconds)
+    public static string GetTimeString(float timeInSeconds)
     {
         return ((timeInSeconds) / 60).ToString("00") + ":" + ((timeInSeconds) % 60).ToString("00");
     }
