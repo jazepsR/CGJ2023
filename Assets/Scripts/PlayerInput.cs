@@ -12,8 +12,9 @@ public class PlayerInput : MonoBehaviour
     float lastDist = 0;
     float minScale = 0.04f;
     float maxScale = 0.1f;
-    float maxTilt = 15f;
-    float minTilt = -50f;
+    float maxTilt = 205f;
+    float minTilt = 160f;
+    private Vector3 lastPosition;
     // Start is called before the first frame update
     void Awake()
     {
@@ -59,11 +60,33 @@ public class PlayerInput : MonoBehaviour
                     castleParent.rotation = Quaternion.Euler(castleParent.localEulerAngles.x, castleParent.localEulerAngles.y, minTilt);
                 if (castleParent.localEulerAngles.z > maxTilt)
                     castleParent.localRotation = Quaternion.Euler(castleParent.localEulerAngles.x, castleParent.localEulerAngles.y, maxTilt);*/
+                if (Input.GetMouseButton(0))
+                {
+                    if(lastPosition == Vector3.zero)
+                        lastPosition = Input.mousePosition;
+                    Vector3 deltaPositon = Input.mousePosition - lastPosition;
+                    castle.Rotate(0, deltaPositon.x * Time.deltaTime * xRotationMult*10, 0, Space.Self);
+                    if ((castleParent.localEulerAngles.z < minTilt && deltaPositon.y > 0) ||
+                        (castleParent.localEulerAngles.z > maxTilt && deltaPositon.y < 0) ||
+                    (castleParent.localEulerAngles.z < maxTilt && castleParent.localEulerAngles.z > minTilt))
+                    {
+                        castleParent.Rotate(0, 0, deltaPositon.y * Time.deltaTime * yRotationMult * 10, Space.Self);
+                    }
+                    lastPosition = Input.mousePosition;
+                }
+
+                if (Input.GetMouseButtonUp(0))
+                    lastPosition = Vector3.zero;
                 if (Input.touchCount == 1)
                 {
                     Touch touch = Input.GetTouch(0);
-                    castle.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self);
-                    castleParent.Rotate(0,0,touch.deltaPosition.y * Time.deltaTime*yRotationMult, Space.Self);
+                    castle.Rotate(0, touch.deltaPosition.x * Time.deltaTime*xRotationMult, 0, Space.Self); 
+                    if ((castleParent.localEulerAngles.z < minTilt && touch.deltaPosition.y > 0) ||
+                        (castleParent.localEulerAngles.z > maxTilt && touch.deltaPosition.y < 0) ||
+                    (castleParent.localEulerAngles.z < maxTilt && castleParent.localEulerAngles.z > minTilt))
+                    {
+                        castleParent.Rotate(0, 0, touch.deltaPosition.y * Time.deltaTime * yRotationMult, Space.Self);
+                    }
 
                 }
                 if (Input.touchCount == 2)

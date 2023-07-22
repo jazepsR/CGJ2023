@@ -80,7 +80,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6113204576256
-    m_Localized: "Att\u0101lums l\u012Bdz spokam: {ghostdistance.dist}m"
+    m_Localized: "Att\u0101lums l\u012Bdz spokam: "
     m_Metadata:
       m_Items:
       - rid: 3446946371847848000

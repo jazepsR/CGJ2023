@@ -8,7 +8,8 @@ public class PlaySound : MonoBehaviour
     // Start is called before the first frame update
     public void Click()
     {
-        MusicController.instance.PlaySound(clip);
+        if(MusicController.instance != null)
+            MusicController.instance.PlaySound(clip);
     }
 
     // Update is called once per frame

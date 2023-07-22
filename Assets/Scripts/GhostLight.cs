@@ -21,6 +21,7 @@ public class GhostLight : MonoBehaviour
     {
         transform.position = startPoint.position;
         yield return new WaitForSecondsRealtime(startIdleTime);
+        moveCompleted = true;
         float t = 0;
         while(t<=1)
         {
@@ -29,7 +30,6 @@ public class GhostLight : MonoBehaviour
             t += Time.deltaTime/moveTime;
         }
         transform.position = endPoint.position;
-        moveCompleted = true;
     }
     // Update is called once per frame
     void Update()

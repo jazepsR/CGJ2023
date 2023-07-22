@@ -78,7 +78,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6113204576256
-    m_Localized: 'Distance to ghost: {ghostdistance.dist}m'
+    m_Localized: 'Distance to ghost: '
     m_Metadata:
       m_Items:
       - rid: 3446946371847848001
