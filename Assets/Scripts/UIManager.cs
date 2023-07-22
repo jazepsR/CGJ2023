@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEditor;
 using System;
+using UnityEngine.Localization;
+using UnityEngine.SocialPlatforms.Impl;
 
 public enum UIMode { map, AR, win, leaderboard}
 public class UIManager : MonoBehaviour
@@ -12,10 +14,12 @@ public class UIManager : MonoBehaviour
     public GameObject mapMenu;
     [SerializeField] private TMP_Text mapHeading;
     [SerializeField] private CastleController castleController;
-    [SerializeField] private string[] castleFloorNames;
+    [SerializeField] private LocalizedString[] castleFloorNames;
+    [SerializeField] private GameObject scoreText;
+    [SerializeField] private LocalizedString scoreTextLocalized;
 
     [Header("ar menu")]
-    public GameObject arMenu;
+    public GameObject arMenu; 
     public TMP_Text score;
     public TMP_Text time;
 
@@ -40,6 +44,7 @@ public class UIManager : MonoBehaviour
         instance = this;
         viewerMode = UIMode.map;
         ToggleViewMode();
+       // scoreTextLocalized= scoreText.GetComponent<LocalizedString>();
     }
     // Start is called before the first frame update
     void Start()
@@ -101,9 +106,11 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score.text = "Score: " + GameManager.instance.score;
+        score.text = scoreTextLocalized.GetLocalizedString()+ GameManager.instance.score;
+        //score.text = "Score: " + GameManager.instance.score;
         //time.text = "Time: "+ string.Format("{0:00}", (Time.time - startTime));
         time.text =  GetTimeString(Time.time - startTime);
-        mapHeading.text = castleFloorNames[castleController.currentFloor];
+        mapHeading.text = castleFloorNames[castleController.currentFloor].GetLocalizedString();
+       // scoreTextLocalized.RefreshString();
     }
 }

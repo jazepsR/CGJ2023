@@ -6,17 +6,21 @@ using Unity.Services.Core;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject textMenu;
     public CanvasGroup textMenuCanvas;
     public AnimationCurve fadeCurve;
+    public GameObject languageMenu;
 
 
     void Start()
     {
-        textMenu.SetActive(false); textMenuCanvas.alpha = 0;
+        textMenu.SetActive(false); 
+        textMenuCanvas.alpha = 0;
     }
 
     async void Awake()
@@ -24,6 +28,14 @@ public class MainMenu : MonoBehaviour
         await UnityServices.InitializeAsync();
 
         await SignInAnonymously();
+    }
+
+    public void LocaleSelected(int index)
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
+        textMenu.SetActive(true);
+        //languageMenu.SetActive(false);
+        StartCoroutine(FadeInTextMenu());
     }
 
     async Task SignInAnonymously()
