@@ -101,6 +101,26 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 63066681319424
+    m_Key: privacy_policy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69333663555584
+    m_Key: tutorial_heading_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69390450237440
+    m_Key: tutorial_body_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69440656056320
+    m_Key: tutorial_heading_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69482670399488
+    m_Key: tutorial_body_2
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

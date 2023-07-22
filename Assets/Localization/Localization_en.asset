@@ -116,6 +116,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3446946371847848001
+  - m_Id: 63066681319424
+    m_Localized: I agree with the <u>Privacy Policy</u>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69333663555584
+    m_Localized: Locate the ghost!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69390450237440
+    m_Localized: Explore the castle model and find where the ghost is hiding!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69440656056320
+    m_Localized: Capture the ghost!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69482670399488
+    m_Localized: 'Go to the ghost''s location! Open the AR mode, find the ghost with
+      your camera and click on it to capture it! '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
