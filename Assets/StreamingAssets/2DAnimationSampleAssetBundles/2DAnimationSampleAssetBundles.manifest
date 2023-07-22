@@ -1,13 +1,13 @@
 ManifestFileVersion: 0
-CRC: 2329317977
+CRC: 47861200
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: ardebugmenu
+      Name: rikrpoison
       Dependencies: {}
     Info_1:
-      Name: rikrrage
+      Name: ardebugmenu
       Dependencies: {}
     Info_2:
-      Name: rikrpoison
+      Name: rikrrage
       Dependencies: {}
