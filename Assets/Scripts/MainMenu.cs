@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public AudioClip introNarration;
     public GameObject textMenu;
     public CanvasGroup textMenuCanvas;
     public AnimationCurve fadeCurve;
@@ -23,7 +22,6 @@ public class MainMenu : MonoBehaviour
     }
     public void GoToText()
     {
-        MusicController.instance.PlaySound(introNarration);
         textMenu.SetActive(true);
         StartCoroutine(FadeInTextMenu());
     }

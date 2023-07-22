@@ -9,11 +9,13 @@ public class GhostLight : MonoBehaviour
     public float moveTime = 5;
     public float startIdleTime = 2;
     public AnimationCurve moveCurve;
+    bool moveCompleted = false;
     // Start is called before the first frame update
     void OnEnable()
     {
         StopAllCoroutines();
-        StartCoroutine("MoveCoroutine");
+        if(!moveCompleted)
+            StartCoroutine("MoveCoroutine");
     }
     private IEnumerator MoveCoroutine()
     {
@@ -27,6 +29,7 @@ public class GhostLight : MonoBehaviour
             t += Time.deltaTime/moveTime;
         }
         transform.position = endPoint.position;
+        moveCompleted = true;
     }
     // Update is called once per frame
     void Update()

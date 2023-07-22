@@ -7,7 +7,7 @@ public class CastleController : MonoBehaviour
 {
     public List<GameObject> floors;
     public List<GameObject> ghostLights;
-    private int currentFloor;
+    [HideInInspector] public int currentFloor;
     // Start is called before the first frame update
     void Start()
     {

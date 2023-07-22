@@ -17,7 +17,6 @@ public class ObjectManager : MonoBehaviour
     public static ObjectManager instance;
     public LoadingBar distanceBar;
     public AudioClip ghostDeath;
-    public AudioClip winNarration;
     private void Awake()
     {
         instance = this;
@@ -38,7 +37,7 @@ public class ObjectManager : MonoBehaviour
         currentGhost++;
         UIManager.instance.ghostMovedText.SetActive(true);
         //placedObjects[currentGhost].startPosition = placedObjects[currentGhost].transform.position;
-        if (currentGhost >= locationBasedObjects.Count-1)
+        if (currentGhost >= locationBasedObjects.Count)
         {
             UIManager.instance.ghostMovedText.SetActive(false);
             currentGhost = 0;
@@ -50,7 +49,6 @@ public class ObjectManager : MonoBehaviour
     {
         winText.SetActive(true);
         MusicController.instance.PlaySound(ghostDeath);
-        MusicController.instance.PlaySound(winNarration);
     }
 
     // Update is called once per frame
