@@ -60,8 +60,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
             if (m_RequiresCameraGrain && !descriptor.supportsCameraGrain)
                 ARSceneSelectUI.DisableButton(m_Button);
             
-            if (m_RequiresExifData && !descriptor.supportsExifData)
-                ARSceneSelectUI.DisableButton(m_Button);
+           // if (m_RequiresExifData && !descriptor.supportsExifData)
+             //   ARSceneSelectUI.DisableButton(m_Button);
         }
     }
 }

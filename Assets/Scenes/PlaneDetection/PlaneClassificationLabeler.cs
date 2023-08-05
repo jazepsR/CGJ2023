@@ -80,9 +80,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 case PlaneClassification.Window:
                     planeMatColor = Color.clear;
                     break;
-                case PlaneClassification.Other:
-                    planeMatColor = Color.black;
-                    break;
             }
 
             planeMatColor.a = 0.33f;
